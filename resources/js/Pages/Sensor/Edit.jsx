@@ -28,7 +28,7 @@ export default function Edit({ auth, sensor }) {
     }
     return (
         <AuthenticatedLayout
-            user={auth.user}
+            user={auth.user} errors={auth.errors}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Update Sensor</h2>}
         >
             <Head title="Sensor" />

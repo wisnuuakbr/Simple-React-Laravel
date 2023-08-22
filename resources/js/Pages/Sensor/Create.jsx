@@ -5,7 +5,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function Create({ auth, sensor }) {
+export default function Create({ auth }) {
 
     // initial datepicker with current date
     const [createdDate, setCreatedDate] = useState(new Date());
@@ -28,7 +28,7 @@ export default function Create({ auth, sensor }) {
     }
     return (
         <AuthenticatedLayout
-            user={auth.user}
+            user={auth.user} errors={auth.errors}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create Sensor</h2>}
         >
             <Head title="Sensor" />

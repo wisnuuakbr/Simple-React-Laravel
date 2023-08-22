@@ -13,6 +13,8 @@ class SensorController extends Controller
     public function index()
     {
         $sensor = Master_Sensor::all();
+        // $sensor = Master_Sensor::withTrashed()->get();
+        // dd($sensor);
         return Inertia::render('Sensor/Index', ['sensor' => $sensor]);
     }
 
@@ -24,11 +26,11 @@ class SensorController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'sensor' => ['required'],
-            'sensor_name' => ['required'],
-            'unit' => ['required'],
-            'created_by' => ['required'],
-            'created_at' => ['required'],
+            'sensor'        => ['required'],
+            'sensor_name'   => ['required'],
+            'unit'          => ['required'],
+            'created_by'    => ['required'],
+            'created_at'    => ['required'],
         ])->validate();
 
         Master_Sensor::create($request->all());
@@ -46,9 +48,11 @@ class SensorController extends Controller
     public function update($id, Request $request)
     {
         Validator::make($request->all(), [
-            'sensor' => ['required'],
-            'sensor_name' => ['required'],
-            'unit' => ['required']
+            'sensor'        => ['required'],
+            'sensor_name'   => ['required'],
+            'unit'          => ['required'],
+            'created_by'    => ['required'],
+            'created_at'    => ['required'],
         ])->validate();
 
         Master_Sensor::find($id)->update($request->all());
@@ -57,7 +61,19 @@ class SensorController extends Controller
 
     public function destroy($id)
     {
-        Master_Sensor::find($id)->delete();
+        $sensor = Master_Sensor::find($id);
+
+        // Check the user's role
+        if (auth()->user()->role === 'admin') {
+            // Update deleted_at for admin (softdelete)
+            // * softdelete dilakukan secara manual agar data masih dapat tampil di index superadmin dan tetap dapat dihapus
+            $sensor->deleted_at = now();
+            $sensor->save();
+        } elseif (auth()->user()->role === 'superadmin') {
+            // Regular delete for superadmin
+            $sensor->delete();
+        }
+
         return redirect()->route('sensor.index');
     }
 }

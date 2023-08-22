@@ -3,7 +3,7 @@ import { Head, Link } from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
 import Swal from 'sweetalert2';
 
-export default function Sensor({ auth, sensor }) {
+export default function Hardware({ auth, hardware }) {
     // check role
     const userRole = auth.user.role;
     // Delete function
@@ -12,7 +12,7 @@ export default function Sensor({ auth, sensor }) {
 
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You will not be able to recover this sensor!',
+            text: 'You will not be able to recover this hardware!',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -20,7 +20,7 @@ export default function Sensor({ auth, sensor }) {
             confirmButtonText: 'Yes'
         }).then((result) => {
             if (result.isConfirmed) {
-                Inertia.delete(route("sensor.destroy", id));
+                Inertia.delete(route("hardware.destroy", id));
                 Swal.fire({
                     icon: 'success',
                     title: 'Data deleted!',
@@ -33,52 +33,58 @@ export default function Sensor({ auth, sensor }) {
     }
     return (
         <AuthenticatedLayout
-            user={auth.user} errors={sensor.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Master Sensor</h2>}
+            user={auth.user} errors={hardware.errors}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Hardware</h2>}
         >
-            <Head title="Sensor" />
+            <Head title="Hardware" />
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
                             {userRole === 'superadmin' || userRole === 'admin' ? (
                                 <div className="flex items-center justify-end mb-6">
-                                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none" href={route("sensor.create")}>Add Data</Link>
+                                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none" href={route("hardware.create")}>Add Data</Link>
                                 </div>
                             ) : null}
                             <table className="table-fixed w-full">
                                 <thead>
                                     <tr className="bg-gray-100">
                                         <th className="px-4 py-2 w-20">No.</th>
-                                        <th className="px-4 py-2">Sensor</th>
-                                        <th className="px-4 py-2">Sensor Name</th>
-                                        <th className="px-4 py-2">Unit</th>
+                                        <th className="px-4 py-2">Hardware</th>
+                                        <th className="px-4 py-2">Location</th>
+                                        <th className="px-4 py-2">Timezone</th>
+                                        <th className="px-4 py-2">Local Time</th>
+                                        <th className="px-4 py-2">Latitude</th>
+                                        <th className="px-4 py-2">Longitude</th>
                                         <th className="px-4 py-2">Created By</th>
-                                        {userRole === 'superadmin' || userRole === 'admin' ? (
-                                            <th className="px-4 py-2">Action</th>
-                                        ) : null}
+                                        <th className="px-4 py-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {sensor.map(({ id, sensor, sensor_name, unit, created_by, deleted_at }) => (
+                                    {hardware.map(({ id, hardware, location, timezone, local_time, latitude, longitude, created_by, deleted_at }) => (
                                         (userRole === 'superadmin' || (userRole === 'admin' && deleted_at === null) || (userRole === 'user' && deleted_at === null)) ? (
                                             <tr key={id}>
                                                 <td className="border px-4 py-2">{id}</td>
-                                                <td className="border px-4 py-2">{sensor}</td>
-                                                <td className="border px-4 py-2">{sensor_name}</td>
-                                                <td className="border px-4 py-2">{unit}</td>
+                                                <td className="border px-4 py-2">{hardware}</td>
+                                                <td className="border px-4 py-2">{location}</td>
+                                                <td className="border px-4 py-2">{timezone}</td>
+                                                <td className="border px-4 py-2">{local_time}</td>
+                                                <td className="border px-4 py-2">{latitude}</td>
+                                                <td className="border px-4 py-2">{longitude}</td>
                                                 <td className="border px-4 py-2">{created_by}</td>
                                                 {/* Delete button (conditionally rendered) */}
-                                                {userRole === 'superadmin' || userRole === 'admin' ? (
-                                                    <td className="flex border px-4 py-2 justify-center">
-                                                        <Link tabIndex="1" type="button" className="px-4 py-2 text-sm text-white bg-yellow-500 rounded" href={route("sensor.edit", id)}>Edit</Link>
+
+                                                <td className="flex border px-4 py-4 justify-center">
+                                                    <Link tabIndex="1" type="button" className="px-4 py-2 text-sm text-white bg-yellow-500 rounded" href={route("hardware.edit", id)}>Edit</Link>
+                                                    {userRole === 'superadmin' || userRole === 'admin' ? (
                                                         <button onClick={(e) => destroy(e, id, userRole)} tabIndex="-1" type="button" className="mx-1 px-4 py-2 text-sm text-white bg-red-500 rounded">Delete</button>
-                                                    </td>
-                                                ) : null}
+                                                    ) : null}
+                                                </td>
+
                                             </tr>
                                         ) : null
                                     ))}
-                                    {sensor.length === 0 && (
+                                    {hardware.length === 0 && (
                                         <tr>
                                             <td className="px-6 py-4 border-t" colSpan="4">Data not found.</td>
                                         </tr>

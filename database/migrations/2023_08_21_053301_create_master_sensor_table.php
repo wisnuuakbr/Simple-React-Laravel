@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('unit');
             $table->string('created_by');
             $table->dateTime('created_at');
-            $table->dateTime('deleted_at')->nullable();
+            $table->softDeletes()->nullable();
         });
     }
 

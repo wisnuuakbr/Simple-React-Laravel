@@ -12,7 +12,7 @@ class HardwareDetail extends Model
     protected $table = 'hardware_detail';
     // fill the db
     protected $fillable = [
-        'hardware_id',
+        'hardware',
         'sensor',
     ];
     // excepting the updated_at

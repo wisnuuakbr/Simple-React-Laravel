@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('hardware_detail', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('hardware_id');
-            $table->foreign('hardware_id')->references('id')->on('hardware');
+            $table->string('hardware');
             $table->string('sensor');
             $table->dateTime('deleted_at')->nullable();
         });

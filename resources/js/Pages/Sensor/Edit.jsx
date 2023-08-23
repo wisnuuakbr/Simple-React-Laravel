@@ -7,18 +7,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export default function Edit({ auth, sensor }) {
 
-    // initial datepicker with current date
-    const [createdDate, setCreatedDate] = useState(new Date(sensor.created_at));
-
-    // Format createdDate to match MySQL datetime format (YYYY-MM-DD)
-    const formattedCreatedDate = createdDate.toISOString().slice(0, 19).replace('T', ' ');
-
     const { data, setData, errors, put } = useForm({
         sensor: sensor.sensor || "",
         sensor_name: sensor.sensor_name || "",
         unit: sensor.unit || "",
-        created_by: auth.user.name,
-        created_at: formattedCreatedDate,
     });
 
     // handle the submit
@@ -97,23 +89,6 @@ export default function Edit({ auth, sensor }) {
                                         <span className="text-red-600">
                                             {errors.unit}
                                         </span>
-                                    </div>
-                                    <div className="mb-4">
-                                        <label className="">Created At</label>
-                                        <div className="relative">
-                                            <DatePicker
-                                                selected={createdDate}
-                                                onChange={date => {
-                                                    setCreatedDate(date);
-                                                    setData("created_at", date.toISOString().slice(0, 10).replace('T', ' '));
-                                                }
-                                                }
-                                                className="w-full rounded"
-                                            />
-                                            <span className="text-red-600 absolute bottom-0 left-0">
-                                                {errors.created_at}
-                                            </span>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="flex mt-4 justify-end">

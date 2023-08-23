@@ -4,20 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Master_Sensor extends Model
+class HardwareDetail extends Model
 {
     use HasFactory;
-    // soft delete
-    // use SoftDeletes;
     // for customing name without s
-    protected $table = 'master_sensor';
+    protected $table = 'hardware_detail';
     // fill the db
     protected $fillable = [
-        'sensor', 'sensor_name', 'unit', 'created_by', 'created_at',
+        'hardware_id',
+        'sensor',
     ];
     // excepting the updated_at
     public $timestamps = false;
-
 }

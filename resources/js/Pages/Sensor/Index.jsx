@@ -49,7 +49,6 @@ export default function Sensor({ auth, sensor }) {
                             <table className="table-fixed w-full">
                                 <thead>
                                     <tr className="bg-gray-100">
-                                        <th className="px-4 py-2 w-20">No.</th>
                                         <th className="px-4 py-2">Sensor</th>
                                         <th className="px-4 py-2">Sensor Name</th>
                                         <th className="px-4 py-2">Unit</th>
@@ -63,7 +62,6 @@ export default function Sensor({ auth, sensor }) {
                                     {sensor.map(({ id, sensor, sensor_name, unit, created_by, deleted_at }) => (
                                         (userRole === 'superadmin' || (userRole === 'admin' && deleted_at === null) || (userRole === 'user' && deleted_at === null)) ? (
                                             <tr key={id}>
-                                                <td className="border px-4 py-2">{id}</td>
                                                 <td className="border px-4 py-2">{sensor}</td>
                                                 <td className="border px-4 py-2">{sensor_name}</td>
                                                 <td className="border px-4 py-2">{unit}</td>

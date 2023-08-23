@@ -8,23 +8,24 @@ import 'react-datepicker/dist/react-datepicker.css';
 export default function Edit({ auth, hardware }) {
 
     // initial datepicker with current date
-    const [createdDate, setCreatedDate] = useState(new Date(hardware.created_at));
     const [localTime, setLocalTime] = useState(new Date());
 
-    // Format createdDate to match MySQL datetime format (YYYY-MM-DD)
-    const formattedCreatedDate = createdDate.toISOString().slice(0, 19).replace('T', ' ');
-    const formattedlocalTime = localTime.toISOString().slice(0, 19).replace('T', ' ');
+    const formattedLocalTime = localTime.toISOString().slice(0, 19).replace('T', ' ');
 
     const { data, setData, errors, put } = useForm({
         hardware: hardware.hardware || "",
         location: hardware.location || "",
         timezone: hardware.timezone || "",
-        local_time: formattedlocalTime,
+        local_time: formattedLocalTime,
         latitude: hardware.latitude || "",
         longitude: hardware.longitude || "",
-        created_by: auth.user.name,
-        created_at: formattedCreatedDate,
     });
+
+    // data timezone
+    const timezones = [
+        { value: "7", label: "Asia/Jakarta" },
+        // Tambahkan zona waktu lain sesuai kebutuhan
+    ];
 
     // handle the submit
     function handleSubmit(e) {
@@ -88,17 +89,20 @@ export default function Edit({ auth, hardware }) {
                                     </div>
                                     <div className="mb-4">
                                         <label className="">Timezone</label>
-                                        <input
-                                            type="number"
+                                        <select
                                             className="w-full rounded"
                                             label="timezone"
                                             name="timezone"
-                                            errors={errors.timezone}
                                             value={data.timezone}
-                                            onChange={(e) =>
-                                                setData("timezone", e.target.value)
-                                            }
-                                        />
+                                            onChange={(e) => setData("timezone", e.target.value)}
+                                        >
+                                            <option value="" disabled>Select a timezone</option>
+                                            {timezones.map((tz) => (
+                                                <option key={tz.value} value={tz.value}>
+                                                    {tz.label}
+                                                </option>
+                                            ))}
+                                        </select>
                                         <span className="text-red-600">
                                             {errors.timezone}
                                         </span>
@@ -111,8 +115,7 @@ export default function Edit({ auth, hardware }) {
                                                 onChange={date => {
                                                     setLocalTime(date);
                                                     setData("local_time", date.toISOString().slice(0, 19).replace('T', ' '));
-                                                }
-                                                }
+                                                }}
                                                 className="w-full rounded"
                                             />
                                             <span className="text-red-600 absolute bottom-0 left-0">
@@ -154,23 +157,6 @@ export default function Edit({ auth, hardware }) {
                                             {errors.longitude}
                                         </span>
                                     </div>
-                                    <div className="mb-4">
-                                        <label className="">Created At</label>
-                                        <div className="relative">
-                                            <DatePicker
-                                                selected={createdDate}
-                                                onChange={date => {
-                                                    setCreatedDate(date);
-                                                    setData("created_at", date.toISOString().slice(0, 19).replace('T', ' '));
-                                                }
-                                                }
-                                                className="w-full rounded"
-                                            />
-                                            <span className="text-red-600 absolute bottom-0 left-0">
-                                                {errors.created_at}
-                                            </span>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div className="flex mt-4 justify-end">
                                     <button
@@ -186,7 +172,6 @@ export default function Edit({ auth, hardware }) {
                     </div>
                 </div>
             </div>
-
         </AuthenticatedLayout >
     )
 }

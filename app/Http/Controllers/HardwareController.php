@@ -23,18 +23,28 @@ class HardwareController extends Controller
 
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
-            'hardware'              => ['required'],
-            'location'              => ['required'],
-            'timezone'              => ['required'],
-            'local_time'            => ['required'],
-            'latitude'              => ['required'],
-            'longitude'             => ['required'],
-            'created_by'            => ['required'],
-            'created_at'            => ['required'],
-        ])->validate();
+        $request->validate([
+            'hardware'      => ['required'],
+            'location'      => ['required'],
+            'timezone'      => ['required'],
+            'local_time'    => ['required'],
+            'latitude'      => ['required'],
+            'longitude'     => ['required'],
+        ]);
 
-        Hardware::create($request->all());
+        // Menggunakan fitur otentikasi Laravel untuk mendapatkan pengguna saat ini
+        $user = auth()->user();
+
+        Hardware::create([
+            'hardware'      => $request->input('hardware'),
+            'location'      => $request->input('location'),
+            'timezone'      => $request->input('timezone'),
+            'local_time'    => $request->input('local_time'),
+            'latitude'      => $request->input('latitude'),
+            'longitude'     => $request->input('longitude'),
+            'created_by'    => $user->name, // Ubah sesuai struktur data
+            'created_at'    => now(),
+        ]);
 
         return redirect()->route('hardware.index');
     }
@@ -48,18 +58,24 @@ class HardwareController extends Controller
 
     public function update($id, Request $request)
     {
-        Validator::make($request->all(), [
-            'hardware'          => ['required'],
-            'location'          => ['required'],
-            'timezone'          => ['required'],
-            'local_time'        => ['required'],
-            'latitude'          => ['required'],
-            'longitude'         => ['required'],
-            'created_by'        => ['required'],
-            'created_at'        => ['required'],
-        ])->validate();
+        $request->validate([
+            'hardware'      => ['required'],
+            'location'      => ['required'],
+            'timezone'      => ['required'],
+            'local_time'    => ['required'],
+            'latitude'      => ['required'],
+            'longitude'     => ['required'],
+        ]);
 
-        Hardware::find($id)->update($request->all());
+        Hardware::find($id)->update([
+            'hardware'      => $request->input('hardware'),
+            'location'      => $request->input('location'),
+            'timezone'      => $request->input('timezone'),
+            'local_time'    => $request->input('local_time'),
+            'latitude'      => $request->input('latitude'),
+            'longitude'     => $request->input('longitude'),
+        ]);
+
         return redirect()->route('hardware.index');
     }
 

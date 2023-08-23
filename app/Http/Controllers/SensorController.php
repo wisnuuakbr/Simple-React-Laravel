@@ -28,12 +28,20 @@ class SensorController extends Controller
         Validator::make($request->all(), [
             'sensor'        => ['required'],
             'sensor_name'   => ['required'],
-            'unit'          => ['required'],
-            'created_by'    => ['required'],
-            'created_at'    => ['required'],
+            'unit'          => ['required']
         ])->validate();
 
-        Master_Sensor::create($request->all());
+
+        // Menggunakan fitur otentikasi Laravel untuk mendapatkan pengguna saat ini
+        $user = auth()->user();
+
+        Master_Sensor::create([
+            'sensor'        => $request->input('sensor'),
+            'sensor_name'   => $request->input('sensor_name'),
+            'unit'          => $request->input('unit'),
+            'created_by'    => $user->name, // Ubah sesuai struktur data
+            'created_at'    => now(),
+        ]);
 
         return redirect()->route('sensor.index');
     }
@@ -50,12 +58,15 @@ class SensorController extends Controller
         Validator::make($request->all(), [
             'sensor'        => ['required'],
             'sensor_name'   => ['required'],
-            'unit'          => ['required'],
-            'created_by'    => ['required'],
-            'created_at'    => ['required'],
+            'unit'          => ['required']
         ])->validate();
 
-        Master_Sensor::find($id)->update($request->all());
+        Master_Sensor::find($id)->update([
+            'sensor'        => $request->input('sensor'),
+            'sensor_name'   => $request->input('sensor_name'),
+            'unit'          => $request->input('unit'),
+        ]);
+
         return redirect()->route('sensor.index');
     }
 

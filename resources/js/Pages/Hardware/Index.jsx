@@ -49,7 +49,6 @@ export default function Hardware({ auth, hardware }) {
                             <table className="table-fixed w-full">
                                 <thead>
                                     <tr className="bg-gray-100">
-                                        <th className="px-4 py-2 w-20">No.</th>
                                         <th className="px-4 py-2">Hardware</th>
                                         <th className="px-4 py-2">Location</th>
                                         <th className="px-4 py-2">Timezone</th>
@@ -64,16 +63,22 @@ export default function Hardware({ auth, hardware }) {
                                     {hardware.map(({ id, hardware, location, timezone, local_time, latitude, longitude, created_by, deleted_at }) => (
                                         (userRole === 'superadmin' || (userRole === 'admin' && deleted_at === null) || (userRole === 'user' && deleted_at === null)) ? (
                                             <tr key={id}>
-                                                <td className="border px-4 py-2">{id}</td>
                                                 <td className="border px-4 py-2">{hardware}</td>
                                                 <td className="border px-4 py-2">{location}</td>
                                                 <td className="border px-4 py-2">{timezone}</td>
-                                                <td className="border px-4 py-2">{local_time}</td>
+                                                <td className="border px-4 py-2">
+                                                    {new Date(local_time).toLocaleString('en-US', {
+                                                        year: 'numeric',
+                                                        month: 'numeric',
+                                                        day: 'numeric',
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        hour12: false
+                                                    })}
+                                                </td>
                                                 <td className="border px-4 py-2">{latitude}</td>
                                                 <td className="border px-4 py-2">{longitude}</td>
                                                 <td className="border px-4 py-2">{created_by}</td>
-                                                {/* Delete button (conditionally rendered) */}
-
                                                 <td className="flex border px-4 py-4 justify-center">
                                                     <Link tabIndex="1" type="button" className="px-4 py-2 text-sm text-white bg-yellow-500 rounded" href={route("hardware.edit", id)}>Edit</Link>
                                                     {userRole === 'superadmin' || userRole === 'admin' ? (

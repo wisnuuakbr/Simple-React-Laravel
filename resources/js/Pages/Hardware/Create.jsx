@@ -65,6 +65,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("hardware", e.target.value)
                                             }
+                                            placeholder="Enter Hardware"
                                         />
                                         <span className="text-red-600">
                                             {errors.hardware}
@@ -82,6 +83,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("location", e.target.value)
                                             }
+                                            placeholder="Enter Location"
                                         />
                                         <span className="text-red-600">
                                             {errors.location}
@@ -135,6 +137,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("latitude", e.target.value)
                                             }
+                                            placeholder="Enter Latitude"
                                         />
                                         <span className="text-red-600">
                                             {errors.latitude}
@@ -152,6 +155,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("longitude", e.target.value)
                                             }
+                                            placeholder="Enter Longitude"
                                         />
                                         <span className="text-red-600">
                                             {errors.longitude}

@@ -51,6 +51,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("sensor", e.target.value)
                                             }
+                                            placeholder="Enter Sensor"
                                         />
                                         <span className="text-red-600">
                                             {errors.sensor}
@@ -68,6 +69,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("sensor_name", e.target.value)
                                             }
+                                            placeholder="Enter Sensor Name"
                                         />
                                         <span className="text-red-600">
                                             {errors.sensor_name}
@@ -85,6 +87,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("unit", e.target.value)
                                             }
+                                            placeholder="Enter Unit"
                                         />
                                         <span className="text-red-600">
                                             {errors.unit}
@@ -104,7 +107,7 @@ export default function Create({ auth }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         </AuthenticatedLayout >
     )

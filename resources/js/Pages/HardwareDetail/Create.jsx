@@ -47,6 +47,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("hardware", e.target.value)
                                             }
+                                            placeholder="Enter Hardware"
                                         />
                                         <span className="text-red-600">
                                             {errors.hardware}
@@ -64,6 +65,7 @@ export default function Create({ auth }) {
                                             onChange={(e) =>
                                                 setData("sensor", e.target.value)
                                             }
+                                            placeholder="Enter Sensor"
                                         />
                                         <span className="text-red-600">
                                             {errors.sensor}

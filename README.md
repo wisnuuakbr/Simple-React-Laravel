@@ -7,9 +7,52 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Requirements
+Untuk menjalankan membutuhkan php versi 8.1+
+##  Installation
+Pastikan semua requirements telah terinstall di sistem.
+Lakukan clone project dan install dependency
+```bash
+  $ git clone https://github.com/wisnuuakbr/submission-tatonas.git
+  $ composer install
+```
+## Configuration
+Copy file .env.example to .env
+
+## Migration & Seeder
+Membuat struktur tabel
+```bash
+  $ php artisan migrate
+```
+Jalankan seeder
+```bash
+  $ php artisan db:seed --class=UserSeeder
+```
+
+## Run Application
+jalankan aplikasi
+```bash
+  $ php artisan serve
+```
+```bash
+  $ yarn dev
+```
+User Akun Email
+```bash
+    superadmin@example.com
+    admin@example.com
+    user@example.com
+```
+User Akun Pass
+```bash
+    tatonas123
+```
+
+
 ## Screenshot
 ![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/a84df045-307b-42a9-8e20-7770b8dd3b01)
 ![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/cb2371d1-52b7-4a35-9ae2-18d7ca8a64aa)
+![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/65d11fa4-dffd-4daa-a2a2-56c6b09f65e7)
 ![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/fb05a69e-57e3-4c83-8ec0-7b3e26437bcd)
 
 ## Contributing

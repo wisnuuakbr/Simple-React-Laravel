@@ -50,10 +50,11 @@ User Akun Pass
 
 
 ## Screenshot
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/a84df045-307b-42a9-8e20-7770b8dd3b01)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/cb2371d1-52b7-4a35-9ae2-18d7ca8a64aa)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/65d11fa4-dffd-4daa-a2a2-56c6b09f65e7)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/fb05a69e-57e3-4c83-8ec0-7b3e26437bcd)
+![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/1e62166b-4878-4f51-80d9-1d15c4b4e665)
+![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/50e2bfe0-3710-4eb4-b073-b979bc8a554c)
+![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/9a22e3d7-aec0-4429-8503-dd52cd9d13fe)
+![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/2bed3967-3752-4bf6-978d-1ebce6abec90)
+
 
 ## Contributing
 

@@ -1,4 +1,11 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+</a>
+<a href="https://react.dev/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png?20220125121207" width="150" alt="React Logo">
+</a>
+<a href="https://vitejs.dev/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/410px-Vitejs-logo.svg.png?20220412224743" width="150" alt="React Logo">
+</a>
+</p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -8,7 +15,16 @@
 </p>
 
 ## Requirements
-Untuk menjalankan membutuhkan php versi 8.1+
+Submission tatonas is currently extended with the following requirements.  
+Instructions on how to use them in your own application are linked below.
+| Requirement | Version   |
+|-------------|-----------|
+| PHP         |   8.1.10  |
+| Mysql       |   8.0.30  |
+| Node        |  16.15.1  |
+| Yarn        |  1.22.19  |
+    	    
+
 ##  Installation
 Pastikan semua requirements telah terinstall di sistem.
 Lakukan clone project dan install dependency

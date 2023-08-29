@@ -65,12 +65,6 @@ User Akun Pass
 ```
 
 
-## Screenshot
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/1e62166b-4878-4f51-80d9-1d15c4b4e665)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/50e2bfe0-3710-4eb4-b073-b979bc8a554c)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/9a22e3d7-aec0-4429-8503-dd52cd9d13fe)
-![image](https://github.com/wisnuuakbr/submission-tatonas/assets/63099469/2bed3967-3752-4bf6-978d-1ebce6abec90)
-
 
 ## Contributing
 

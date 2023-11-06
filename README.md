@@ -29,7 +29,7 @@ Instructions on how to use them in your own application are linked below.
 Pastikan semua requirements telah terinstall di sistem.
 Lakukan clone project dan install dependency
 ```bash
-  $ git clone https://github.com/wisnuuakbr/submission-tatonas.git
+  $ git clone https://github.com/wisnuuakbr/simple-react-laravel.git
   $ composer install
 ```
 ## Configuration

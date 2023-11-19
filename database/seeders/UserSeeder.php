@@ -21,21 +21,21 @@ class UserSeeder extends Seeder
                 'name'      => 'Super Admin',
                 'role'      => 'superadmin',
                 'email'     => 'superadmin@example.com',
-                'password'  => Hash::make('tatonas123'),
+                'password'  => Hash::make('superadmin123'),
             ]);
 
             $admin = User::create([
                 'name'      => 'Admin User',
                 'role'      => 'admin',
                 'email'     => 'admin@example.com',
-                'password'  => Hash::make('tatonas123'),
+                'password'  => Hash::make('admin123'),
             ]);
 
             $user = User::create([
                 'name'      => 'Regular User',
                 'role'      => 'user',
                 'email'     => 'user@example.com',
-                'password'  => Hash::make('tatonas123'),
+                'password'  => Hash::make('user123'),
             ]);
         }
     }

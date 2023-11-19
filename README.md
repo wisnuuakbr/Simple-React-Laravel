@@ -53,15 +53,11 @@ jalankan aplikasi
 ```bash
   $ yarn dev
 ```
-User Akun Email
+User Akun
 ```bash
-    superadmin@example.com
-    admin@example.com
-    user@example.com
-```
-User Akun Pass
-```bash
-    tatonas123
+    superadmin@example.com/superadmin123
+    admin@example.com/admin123
+    user@example.com/user123
 ```
 
 
